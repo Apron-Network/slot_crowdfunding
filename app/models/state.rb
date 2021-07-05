@@ -17,7 +17,7 @@ class State < ApplicationRecord
     end
 
     # https://www.stakingrewards.com/earn/kusama
-    SUPPORT_SYMBOLS = %w[PHA DOT KSM].map(&:downcase)
+    SUPPORT_SYMBOLS = %w[APN DOT KSM].map(&:downcase)
 
     def coin_stake_participating_rate(symbol:)
       symbol = symbol.downcase

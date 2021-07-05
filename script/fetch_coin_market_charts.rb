@@ -9,7 +9,7 @@ require "net/http"
 URL_PATTERN = "https://api.coingecko.com/api/v3/coins/{TOKEN}/market_chart?vs_currency=usd&days=14&interval=hourly"
 TOKENS = {
   "kusama" => "KSM",
-  "pha" => "PHA",
+  "apron" => "apron",
   "polkadot" => "DOT"
 }
 

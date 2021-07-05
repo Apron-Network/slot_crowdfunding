@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Campaign.create! name: "Phala Kusama crowdloan",
+Campaign.create! name: "Apron Kusama crowdloan",
                  chain: :kusama,
                  parachain_id: 2004,
                  cap: 150_000,
@@ -29,7 +29,7 @@ State.coin_stake_apr(symbol: "KSM").update! decimal_value: 14.21
 State.coin_stake_participating_rate(symbol: "DOT").update! decimal_value: 62.83
 State.coin_stake_apr(symbol: "DOT").update! decimal_value: 13.25
 
-campaign = Campaign.create! name: "Phala test crowdloan",
+campaign = Campaign.create! name: "Apron test crowdloan",
                             chain: :dev,
                             parachain_id: 2000,
                             cap: 15000,

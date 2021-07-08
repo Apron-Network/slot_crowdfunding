@@ -2,7 +2,7 @@
 
 class CoinMarketChartsController < ApplicationController
   LIMIT = 24 * 14 # Hourly by default with 14 days
-  SUPPORT_SYMBOLS = %w[APN DOT KSM]
+  SUPPORT_SYMBOLS = %w[APRON DOT KSM]
 
   def show
     symbol = params[:id]&.upcase

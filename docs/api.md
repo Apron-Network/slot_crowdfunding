@@ -20,11 +20,15 @@ curl $URL/coin_market_charts/ksm
 
 {
   "symbol": "KSM",
-  "price": 0.0,
-  "last_updated_at": null,
+  "price": 214.8381,
+  "last_updated_at": "2021-07-08T08:00:00.000Z",
   "stake_participating_rate": 47.88,
   "stake_apr": 14.21,
-  "data": []
+  "data": [
+    ["2021-06-24T09:00:00.000Z", 193.2729],
+    ["2021-06-24T10:00:00.000Z", 195.6996],
+    ["2021-07-08T08:00:00.000Z", 214.8381]
+  ]
 }
 ```
 
@@ -33,29 +37,36 @@ curl $URL/coin_market_charts/dot
 
 {
   "symbol": "DOT",
-  "price": 0.0,
-  "last_updated_at": null,
+  "price": 15.4464,
+  "last_updated_at": "2021-07-08T08:00:00.000Z",
   "stake_participating_rate": 62.83,
   "stake_apr": 13.25,
-  "data": []
+  "data": [
+    ["2021-06-24T09:00:00.000Z", 15.7872],
+    ["2021-07-08T07:00:00.000Z", 15.8741],
+    ["2021-07-08T08:00:00.000Z", 15.4464]
+  ]
 }
 ```
 
 ```
-curl $URL/coin_market_charts/apn
+curl $URL/coin_market_charts/apron
 
 {
-  "symbol": "APN",
-  "price": 0.0,
-  "last_updated_at": null,
+  "symbol": "APRON",
+  "price": 0.0769,
+  "last_updated_at": "2021-07-08T08:00:00.000Z",
   "stake_participating_rate": 0.0,
   "stake_apr": 0.0,
-  "data": []
+  "data": [
+    ["2021-06-24T09:00:00.000Z", 0.0808],
+    ["2021-06-24T10:00:00.000Z", 0.0818],
+    ["2021-07-08T08:00:00.000Z", 0.0769]
+  ]
 }
 ```
 
-
-### campaigns 是list
+### campaigns
 
 ```
 curl $URL/campaigns
@@ -130,12 +141,48 @@ curl $URL/campaigns/1/announcements
 
 {
   "meta": {},
-  "announcements": [],
+  "announcements": [{
+    "id": 1,
+    "title": "demmmmmmo",
+    "link": "http://apron.network/",
+    "body": "DECENTRALIZED INFRASTRUCTURE SERVICE NETWORK",
+    "locale": "en",
+    "published_at": "2021-07-07 17:07:27 +0800"
+  }, {
+    "id": 3,
+    "title": "mmm1",
+    "link": "so.com",
+    "body": "qwertyuiop",
+    "locale": "en",
+    "published_at": "2021-07-07 17:07:27 +0800"
+  }],
   "pagination": {
     "current_page": 1,
     "total_page": 1,
-    "total_count": 0,
-    "per_page": 20
+    "total_count": 2,
+    "per_page": 2
+  }
+}
+```
+
+```
+curl $URL/campaigns/1/announcements?locale=zh
+
+{
+  "meta": {},
+  "announcements": [{
+    "id": 2,
+    "title": "123",
+    "link": "https://www.so.com/",
+    "body": "123",
+    "locale": "zh",
+    "published_at": "2021-07-07 17:08:47 +0800"
+  }],
+  "pagination": {
+    "current_page": 1,
+    "total_page": 1,
+    "total_count": 1,
+    "per_page": 1
   }
 }
 ```

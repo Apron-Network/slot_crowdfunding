@@ -10,7 +10,8 @@ JS_APP_PATH = CURRENT_PATH.join("..", "vendor", "polkadot_js_snippets")
 
 CHAIN_ENDPOINTS = {
   dev: "http://127.0.0.1:9933", # "ws://127.0.0.1:9944"
-  kusama: "http://127.0.0.1:9933" # "ws://127.0.0.1:9944"
+  kusama: "https://kusama-rpc.polkadot.io" # "ws://127.0.0.1:9944"
+  # kusama: "http://127.0.0.1:9933" # "ws://127.0.0.1:9944"
 }.with_indifferent_access
 
 current_chain = ARGV[0]

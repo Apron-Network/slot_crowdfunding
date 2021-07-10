@@ -38,7 +38,7 @@ TOKENS.each do |token, symbol|
     {
       symbol: symbol,
       timestamp: Time.at(row[0] / 1000),
-      price: row[1].truncate(4)
+      price: row[1].truncate(7)
     }
   end
 

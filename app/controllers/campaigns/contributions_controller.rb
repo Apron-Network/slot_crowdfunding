@@ -6,14 +6,19 @@ module Campaigns
       meta = {}
       scoped_contributions = @campaign.contributions.includes(:contributor).order(timestamp: :desc)
       if params[:contributor].present?
-        contributor = @campaign.contributors.find_by! address: params[:contributor]
-        scoped_contributions = scoped_contributions.where(contributor: contributor)
+        contributor = @campaign.contributors.find_by(address: params[:contributor])
+        if contributor
+          scoped_contributions = scoped_contributions.where(contributor: contributor)
+        end
       elsif params[:referrer].present?
-        contributor = @campaign.contributors.find_by! address: params[:referrer]
-        scoped_contributions = scoped_contributions.where(contributor: contributor.referrals)
+        contributor = @campaign.contributors.find_by(address: params[:referrer])
 
-        meta[:referrals_count] = contributor.referrals.size
-        meta[:promotion_reward_amount] = scoped_contributions.sum(:promotion_reward_amount).to_f.truncate(4)
+        if contributor
+          scoped_contributions = scoped_contributions.where(contributor: contributor.referrals)
+
+          meta[:referrals_count] = contributor.referrals.size
+          meta[:promotion_reward_amount] = scoped_contributions.sum(:promotion_reward_amount).to_f.truncate(4)
+        end
       end
 
       @pagy, @contributions = pagy(scoped_contributions, page: params[:page], items: params[:per_page])

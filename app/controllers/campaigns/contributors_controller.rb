@@ -2,6 +2,7 @@
 
 module Campaigns
   class ContributorsController < Campaigns::ApplicationController
+
     def index
       scoped_contributors = @campaign.contributors
       unless params[:all].present?
@@ -19,8 +20,11 @@ module Campaigns
 
       meta = {}
       if params[:contributor].present?
-        current_contributor = @campaign.contributors.find_by! address: params[:contributor]
-        meta[:rank] = current_contributor.amount > 0 ? @campaign.contributors.where("amount > ?", current_contributor.amount).count + 1 : 0
+        current_contributor = @campaign.contributors.find_by(address: params[:contributor])
+
+        if current_contributor
+          meta[:rank] = current_contributor.amount > 0 ? @campaign.contributors.where("amount > ?", current_contributor.amount).count + 1 : 0
+        end
       end
 
       render json: {
@@ -31,12 +35,16 @@ module Campaigns
     end
 
     def show
-      @contributor = @campaign.contributors.find_by! address: params[:id]
+      @contributor = @campaign.contributors.find_by(address: params[:id])
 
-      render json: {
-        contributor: serialize_contributor(@contributor),
-        meta: serialize_contributor_meta(@contributor)
-      }
+      if @contributor
+        render json: {
+          contributor: serialize_contributor(@contributor),
+          meta: serialize_contributor_meta(@contributor)
+        }
+      else
+        render json: {}
+      end
     end
 
     private
